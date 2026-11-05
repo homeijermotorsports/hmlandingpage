@@ -4,15 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homeijer Motorsports</title>
+
+  <!-- Clean, bold modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary-orange: #f26522;
-      --secondary-orange: #d9531e;
-      --dark-charcoal: #1f2326;
-      --deep-black: #111215;
-      --card-bg: #1a1c20;
-      --text-white: #ffffff;
-      --text-muted: #a0a6b1;
+      --orange: #f26522;
+      --orange-light: #fff2eb;
+      --orange-hover: #d85213;
+      --charcoal: #25282d;
+      --charcoal-dark: #191b1f;
+      --bg-main: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
 
     * {
@@ -22,85 +33,179 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--deep-black);
-      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       line-height: 1.6;
     }
 
-    /* Header / Hero */
+    /* Top Navigation / Brand Header */
     header {
-      background: linear-gradient(135deg, var(--deep-black) 0%, var(--dark-charcoal) 100%);
-      border-bottom: 4px solid var(--primary-orange);
-      padding: 3rem 1.5rem;
-      text-align: center;
+      background: var(--bg-white);
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-style: italic;
-      color: var(--text-white);
-      text-shadow: 2px 2px 0px var(--primary-orange);
-    }
-
-    /* Layout Sections */
-    section {
-      max-width: 1100px;
+    .header-inner {
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 4rem 1.5rem;
-      border-bottom: 1px solid #2a2e35;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    h2.section-title {
-      font-size: 2rem;
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+
+    /* Recreated Logo SVG with Charcoal & Orange Wings */
+    .brand-logo-svg {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--charcoal);
       text-transform: uppercase;
-      font-style: italic;
-      margin-bottom: 2rem;
+    }
+
+    .brand-text span {
+      color: var(--orange);
+    }
+
+    /* Main Section Wrappers */
+    section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 2.25rem;
       position: relative;
       display: inline-block;
+      letter-spacing: -0.5px;
     }
 
-    h2.section-title::after {
+    .section-title::after {
       content: "";
-      display: block;
-      width: 50%;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 48px;
       height: 4px;
-      background: var(--primary-orange);
-      margin-top: 6px;
+      background: var(--orange);
+      border-radius: 2px;
     }
 
-    /* Car Section */
-    .car-container {
+    /* Section 1: What We Drive */
+    .car-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
       align-items: center;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
     }
 
-    @media (min-width: 768px) {
-      .car-container {
-        grid-template-columns: 1fr 1fr;
+    @media (min-width: 850px) {
+      .car-grid {
+        grid-template-columns: 1.1fr 0.9fr;
       }
     }
 
-    .car-image img {
-      width: 100%;
+    .car-image-container {
+      position: relative;
       border-radius: 8px;
-      border: 2px solid var(--dark-charcoal);
-      box-shadow: 0 8px 24px rgba(242, 101, 34, 0.15);
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .car-image-container img {
+      width: 100%;
+      height: 380px;
       object-fit: cover;
+      display: block;
+    }
+
+    .car-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--charcoal);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border-left: 3px solid var(--orange);
     }
 
     .car-info h3 {
-      font-size: 1.8rem;
-      color: var(--primary-orange);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--orange);
       margin-bottom: 1rem;
     }
 
-    /* Meet the Team */
+    .car-info p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .specs-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
+
+    .spec-item {
+      background: var(--bg-main);
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--charcoal);
+    }
+
+    .spec-item span.label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .spec-item span.val {
+      font-weight: 700;
+      color: var(--charcoal);
+      font-size: 0.95rem;
+    }
+
+    /* Section 2: Meet The Team */
     .team-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -114,100 +219,112 @@
     }
 
     .team-card {
-      background: var(--card-bg);
-      border-radius: 8px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
       overflow: hidden;
-      border: 1px solid #2e343d;
-      border-top: 3px solid var(--primary-orange);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
     }
 
     .team-card img {
       width: 100%;
-      height: 280px;
+      height: 300px;
       object-fit: cover;
-    }
-
-    .team-card-content {
-      padding: 1.5rem;
-    }
-
-    .team-card-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .team-card-content span.role {
-      color: var(--primary-orange);
-      font-size: 0.9rem;
-      font-weight: bold;
-      text-transform: uppercase;
       display: block;
-      margin-bottom: 0.75rem;
     }
 
-    /* Stats Section */
-    .stats-grid {
+    .team-content {
+      padding: 2rem;
+    }
+
+    .team-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .team-content .role {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.85rem;
+      display: inline-block;
+    }
+
+    .team-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Section 3: Performance Stats */
+    .stats-container {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
 
     @media (min-width: 768px) {
-      .stats-grid {
+      .stats-container {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     .stat-rectangle {
-      background: var(--card-bg);
-      border: 1px solid #2e343d;
-      border-left: 6px solid var(--primary-orange);
-      padding: 2rem 1.5rem;
-      border-radius: 6px;
-      text-align: center;
-      transition: transform 0.2s ease;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--orange);
+      padding: 2.5rem 1.75rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
     }
 
     .stat-rectangle:hover {
-      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+      border-top-color: var(--orange);
     }
 
     .stat-number {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: var(--text-white);
-      line-height: 1.1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1;
       margin-bottom: 0.5rem;
     }
 
     .stat-label {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--orange);
       text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      color: var(--primary-orange);
-      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.35rem;
     }
 
     .stat-subtext {
       color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 0.5rem;
     }
 
-    /* Recap Carousel */
-    .recap-content {
-      margin-bottom: 2rem;
-      color: var(--text-muted);
-    }
-
-    .carousel-container {
+    /* Section 4: 2026 Recap (Photos on Top, Text Below) */
+    .carousel-wrapper {
       position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: 8px;
-      border: 2px solid #2e343d;
+      box-shadow: var(--shadow-md);
+      background: var(--charcoal);
     }
 
     .carousel-slide {
@@ -220,149 +337,202 @@
 
     .carousel-slide img {
       width: 100%;
-      height: 420px;
+      height: 480px;
       object-fit: cover;
       display: block;
     }
 
-    .carousel-controls {
-      display: flex;
-      justify-content: space-between;
+    .nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 100%;
-      padding: 0 1rem;
-    }
-
-    .carousel-btn {
-      background: rgba(17, 18, 21, 0.8);
-      color: var(--text-white);
-      border: 1px solid var(--primary-orange);
-      font-size: 1.5rem;
-      width: 44px;
-      height: 44px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--charcoal);
+      border: 1px solid var(--border-color);
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .carousel-btn:hover {
-      background: var(--primary-orange);
+    .nav-btn:hover {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    .nav-btn.prev { left: 1.25rem; }
+    .nav-btn.next { right: 1.25rem; }
+
+    .recap-text-bottom {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.25rem;
+      margin-top: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .recap-text-bottom h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .recap-text-bottom p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
     }
 
     /* Footer */
     footer {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.5rem;
       text-align: center;
-      padding: 2.5rem 1rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      border-top: 1px solid #222;
+      font-size: 0.9rem;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Top Navigation Header -->
   <header>
-    <h1>Homeijer Motorsports</h1>
+    <div class="header-inner">
+      <div class="brand-container">
+        <!-- Homeijer Motorsports Logo Icon Reproduction -->
+        <svg class="brand-logo-svg" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Charcoal HM Monogram -->
+          <polygon points="50,15 110,15 90,52 140,52 158,15 218,15 170,105 125,105 142,70 95,70 78,105 20,105" fill="#25282d"/>
+          <!-- Vibrant Orange Accent Wing -->
+          <polygon points="12,75 55,75 42,95 0,95" fill="#f26522"/>
+          <polygon points="105,95 210,95 255,25 240,25 200,80 115,80" fill="#f26522"/>
+        </svg>
+        <div class="brand-text">Homeijer <span>Motorsports</span></div>
+      </div>
+    </div>
   </header>
 
-  <!-- Car Section -->
-  <section id="car">
-    <h2 class="section-title">The Machine</h2>
-    <div class="car-container">
-      <div class="car-image">
-        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="2013 Subaru BRZ" />
+  <!-- Section 1: What We Drive -->
+  <section id="what-we-drive">
+    <h2 class="section-title">What We Drive</h2>
+    <div class="car-grid">
+      <div class="car-image-container">
+        <span class="car-badge">Chassis // 2013</span>
+        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="2013 Subaru BRZ Track Build" />
       </div>
       <div class="car-info">
         <h3>2013 Subaru BRZ</h3>
         <p>
-          [Insert car overview and backstory here. Example: Engineered for balance and cornering agility, our 2013 Subaru BRZ build features a customized aero kit, race-tuned suspension, and high-performance track cooling.]
+          [Insert car background, setup philosophy, and build journey here. Example: Developed for track-day precision and momentum-style cornering balance with complete telemetry integration.]
         </p>
-        <br />
-        <p>
-          [Insert technical specs here. Example: Engine: 2.0L Boxer | Horsepower: 215 whp | Suspension: 2-way adjustable coilovers | Curb Weight: 2,700 lbs]
-        </p>
+
+        <div class="specs-list">
+          <div class="spec-item">
+            <span class="label">Engine</span>
+            <span class="val">[2.0L FA20 Boxer]</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">Suspension</span>
+            <span class="val">[Adjustable Coilovers]</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">Aero</span>
+            <span class="val">[Front Splitter / Wing]</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">Tires & Brakes</span>
+            <span class="val">[200TW Track Setup]</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Team Section -->
+  <!-- Section 2: Meet The Team -->
   <section id="team">
     <h2 class="section-title">Meet the Team</h2>
     <div class="team-grid">
       <!-- Member 1 -->
       <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Team Member 1" />
-        <div class="team-card-content">
-          <h3>[Team Member Name 1]</h3>
-          <span class="role">Lead Driver</span>
-          <p>[Insert short biography here. Outline racing experience, primary classes competed in, and background behind the wheel.]</p>
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Team Driver" />
+        <div class="team-content">
+          <h3>[Team Member 1]</h3>
+          <span class="role">Driver & Setup Engineer</span>
+          <p>[Insert biography here. Highlight competition history, track license achievements, and seat time experience.]</p>
         </div>
       </div>
       <!-- Member 2 -->
       <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Team Member 2" />
-        <div class="team-card-content">
-          <h3>[Team Member Name 2]</h3>
-          <span class="role">Crew Chief & Data Lead</span>
-          <p>[Insert short biography here. Outline technical expertise, trackside setup responsibilities, and chassis tuning experience.]</p>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Team Crew" />
+        <div class="team-content">
+          <h3>[Team Member 2]</h3>
+          <span class="role">Pit Crew & Data Lead</span>
+          <p>[Insert biography here. Outline trackside responsibilities, telemetry optimization, and chassis maintenance.]</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- Section 3: Performance Stats -->
   <section id="stats">
     <h2 class="section-title">Performance Metrics</h2>
-    <div class="stats-grid">
+    <div class="stats-container">
       <div class="stat-rectangle">
         <div class="stat-number">12</div>
         <div class="stat-label">Podium Finishes</div>
-        <div class="stat-subtext">Across regional time trials</div>
+        <div class="stat-subtext">Earned across regional time attack events</div>
       </div>
       <div class="stat-rectangle">
         <div class="stat-number">1:21.4</div>
-        <div class="stat-label">Best Lap Time</div>
-        <div class="stat-subtext">Club circuit benchmark</div>
+        <div class="stat-label">Benchmark Lap Time</div>
+        <div class="stat-subtext">Personal best recorded on club circuit</div>
       </div>
       <div class="stat-rectangle">
         <div class="stat-number">100%</div>
-        <div class="stat-label">Race Completions</div>
-        <div class="stat-subtext">Zero mechanical DNFs this year</div>
+        <div class="stat-label">Finish Reliability</div>
+        <div class="stat-subtext">Zero mechanical DNFs throughout the season</div>
       </div>
     </div>
   </section>
 
-  <!-- Season Recap -->
+  <!-- Section 4: 2026 Season Recap (Photos Top, Text Below) -->
   <section id="recap">
     <h2 class="section-title">2026 Season Recap</h2>
-    <div class="recap-content">
-      <p>
-        [Insert season summary text here. Highlight championship standings, standout weekend battles, key mechanical upgrades made throughout 2026, and upcoming aspirations for next season.]
-      </p>
+
+    <!-- Photo Carousel -->
+    <div class="carousel-wrapper">
+      <div class="carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80" alt="Season 2026 Track Moment 1" />
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1541348263662-e0c8666524e4?auto=format&fit=crop&w=1200&q=80" alt="Season 2026 Track Moment 2" />
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" alt="Season 2026 Track Moment 3" />
+      </div>
+
+      <button class="nav-btn prev" onclick="moveSlide(-1)" aria-label="Previous image">&#10094;</button>
+      <button class="nav-btn next" onclick="moveSlide(1)" aria-label="Next image">&#10095;</button>
     </div>
 
-    <!-- Carousel -->
-    <div class="carousel-container">
-      <div class="carousel-slide active">
-        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 1" />
-      </div>
-      <div class="carousel-slide">
-        <img src="https://images.unsplash.com/photo-1541348263662-e0c8666524e4?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 2" />
-      </div>
-      <div class="carousel-slide">
-        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 3" />
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-btn" onclick="nextSlide()">&#10095;</button>
-      </div>
+    <!-- Text Underneath -->
+    <div class="recap-text-bottom">
+      <h4>Reflections from the 2026 Season</h4>
+      <p>
+        [Insert your season narrative here. Detail championship positions, standout track weekends, mechanical developments made over the season, challenges overcome in varied track conditions, and goals heading into the next year.]
+      </p>
     </div>
   </section>
 
@@ -373,23 +543,13 @@
 
   <!-- Simple Carousel Script -->
   <script>
-    let currentSlide = 0;
+    let activeIdx = 0;
     const slides = document.querySelectorAll('.carousel-slide');
 
-    function showSlide(index) {
-      slides.forEach((slide) => slide.classList.remove('active'));
-      if (index >= slides.length) currentSlide = 0;
-      else if (index < 0) currentSlide = slides.length - 1;
-      else currentSlide = index;
-      slides[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
+    function moveSlide(step) {
+      slides[activeIdx].classList.remove('active');
+      activeIdx = (activeIdx + step + slides.length) % slides.length;
+      slides[activeIdx].classList.add('active');
     }
   </script>
 </body>
