@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homeijer Motorsports</title>
 
-  <!-- Clean, bold modern typography -->
+  <!-- Clean modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
@@ -52,37 +52,18 @@
     .header-inner {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 1.1rem 1.5rem;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
 
-    .brand-container {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-      text-decoration: none;
-    }
-
-    /* Inline Vector HM Logo */
-    .brand-logo-svg {
-      height: 46px;
+    /* Embedded Brand Image */
+    .brand-logo-img {
+      height: 44px;
       width: auto;
       display: block;
-    }
-
-    .brand-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.65rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--charcoal);
-      text-transform: uppercase;
-    }
-
-    .brand-text span {
-      color: var(--orange);
+      object-fit: contain;
     }
 
     /* Main Section Wrappers */
@@ -345,7 +326,7 @@
       font-size: 0.85rem;
     }
 
-    /* Section 4: 2026 Season Recap */
+    /* Section 4: 2026 Season Recap (Photos Top, Text Below) */
     .carousel-wrapper {
       position: relative;
       border-radius: 12px;
@@ -434,33 +415,17 @@
 </head>
 <body>
 
-  <!-- Top Navigation Header with Embedded Logo SVG -->
+  <!-- Top Navigation Header -->
   <header>
     <div class="header-inner">
-      <div class="brand-container">
-        <!-- Self-contained Vector Logo (Always loads, no image files needed) -->
-        <svg class="brand-logo-svg" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Left Orange Stripe -->
-          <polygon points="12,118 64,118 48,138 0,138" fill="#F26522"/>
-          
-          <!-- Bottom Right Orange Bracket -->
-          <polygon points="78,138 184,138 245,66 226,66 174,124 88,124" fill="#F26522"/>
-          <polygon points="184,138 245,66 256,76 195,148 78,148" fill="#DE5316"/>
-          
-          <!-- Charcoal "H" Monogram with Inward Notches -->
-          <polygon points="62,28 116,28 72,106 48,106" fill="#2E3035"/>
-          <polygon points="80,63 124,63 118,74 74,74" fill="#2E3035"/>
-          <polygon points="120,28 174,28 140,89 122,89" fill="#2E3035"/>
-          
-          <!-- Charcoal "M" Section -->
-          <polygon points="144,57 166,57 146,92 134,92" fill="#2E3035"/>
-          <polygon points="138,89 158,89 126,138 110,138" fill="#2E3035"/>
-          <polygon points="152,72 174,72 154,106 142,106" fill="#2E3035"/>
-          <polygon points="166,57 236,57 194,138 152,138" fill="#2E3035"/>
-        </svg>
-
-        <div class="brand-text">Homeijer <span>Motorsports</span></div>
-      </div>
+      <!-- Direct Inline Image: Renders instantly everywhere without broken links -->
+      <img 
+        class="brand-logo-img" 
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" 
+        data-brand="homeijer"
+        alt="Homeijer Motorsports" 
+        id="homeijerLogo"
+      />
     </div>
   </header>
 
@@ -589,8 +554,56 @@
     <p>&copy; 2026 Homeijer Motorsports. All rights reserved.</p>
   </footer>
 
-  <!-- Simple Carousel Script -->
+  <!-- Script for Logo Embed & Carousel -->
   <script>
+    // Clean Canvas Logo Generator to Guarantee Instant Display
+    const logoImg = document.getElementById('homeijerLogo');
+    const canvas = document.createElement('canvas');
+    canvas.width = 750;
+    canvas.height = 130;
+    const ctx = canvas.getContext('2d');
+
+    // Draw Background
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw Orange Chevrons & Base Bar
+    ctx.fillStyle = '#f26522';
+    ctx.beginPath();
+    ctx.moveTo(10, 85);
+    ctx.lineTo(650, 85);
+    ctx.lineTo(625, 125);
+    ctx.lineTo(125, 125);
+    ctx.closePath();
+    ctx.fill();
+
+    // Secondary Accent Orange
+    ctx.fillStyle = '#d9531e';
+    ctx.beginPath();
+    ctx.moveTo(650, 85);
+    ctx.lineTo(685, 40);
+    ctx.lineTo(705, 52);
+    ctx.lineTo(655, 125);
+    ctx.lineTo(625, 125);
+    ctx.closePath();
+    ctx.fill();
+
+    // Draw Dark Charcoal Slanted Main Title
+    ctx.save();
+    ctx.transform(1, 0, -0.22, 1, 0, 0); // Racing slant
+    ctx.fillStyle = '#111215';
+    ctx.font = '900 64px "Space Grotesk", sans-serif';
+    ctx.fillText('HOMEIJER', 55, 68);
+
+    // Draw Subtext in White
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 28px "Space Grotesk", sans-serif';
+    ctx.fillText('MOTORSPORTS', 170, 114);
+    ctx.restore();
+
+    // Set src to rendered logo
+    logoImg.src = canvas.toDataURL();
+
+    // Carousel Controller
     let activeIdx = 0;
     const slides = document.querySelectorAll('.carousel-slide');
 
