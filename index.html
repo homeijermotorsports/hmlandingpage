@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeijer Motorsports</title>
+  <style>
+    :root {
+      --primary-orange: #f26522;
+      --secondary-orange: #d9531e;
+      --dark-charcoal: #1f2326;
+      --deep-black: #111215;
+      --card-bg: #1a1c20;
+      --text-white: #ffffff;
+      --text-muted: #a0a6b1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--deep-black);
+      color: var(--text-white);
+      line-height: 1.6;
+    }
+
+    /* Header / Hero */
+    header {
+      background: linear-gradient(135deg, var(--deep-black) 0%, var(--dark-charcoal) 100%);
+      border-bottom: 4px solid var(--primary-orange);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-style: italic;
+      color: var(--text-white);
+      text-shadow: 2px 2px 0px var(--primary-orange);
+    }
+
+    /* Layout Sections */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      border-bottom: 1px solid #2a2e35;
+    }
+
+    h2.section-title {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2.section-title::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 4px;
+      background: var(--primary-orange);
+      margin-top: 6px;
+    }
+
+    /* Car Section */
+    .car-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .car-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .car-image img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid var(--dark-charcoal);
+      box-shadow: 0 8px 24px rgba(242, 101, 34, 0.15);
+      object-fit: cover;
+    }
+
+    .car-info h3 {
+      font-size: 1.8rem;
+      color: var(--primary-orange);
+      margin-bottom: 1rem;
+    }
+
+    /* Meet the Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #2e343d;
+      border-top: 3px solid var(--primary-orange);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .team-card-content {
+      padding: 1.5rem;
+    }
+
+    .team-card-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card-content span.role {
+      color: var(--primary-orange);
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stat-rectangle {
+      background: var(--card-bg);
+      border: 1px solid #2e343d;
+      border-left: 6px solid var(--primary-orange);
+      padding: 2rem 1.5rem;
+      border-radius: 6px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .stat-rectangle:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: var(--primary-orange);
+      font-weight: bold;
+    }
+
+    .stat-subtext {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Recap Carousel */
+    .recap-content {
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid #2e343d;
+    }
+
+    .carousel-slide {
+      display: none;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .carousel-btn {
+      background: rgba(17, 18, 21, 0.8);
+      color: var(--text-white);
+      border: 1px solid var(--primary-orange);
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--primary-orange);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Homeijer Motorsports</h1>
+  </header>
+
+  <!-- Car Section -->
+  <section id="car">
+    <h2 class="section-title">The Machine</h2>
+    <div class="car-container">
+      <div class="car-image">
+        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="2013 Subaru BRZ" />
+      </div>
+      <div class="car-info">
+        <h3>2013 Subaru BRZ</h3>
+        <p>
+          [Insert car overview and backstory here. Example: Engineered for balance and cornering agility, our 2013 Subaru BRZ build features a customized aero kit, race-tuned suspension, and high-performance track cooling.]
+        </p>
+        <br />
+        <p>
+          [Insert technical specs here. Example: Engine: 2.0L Boxer | Horsepower: 215 whp | Suspension: 2-way adjustable coilovers | Curb Weight: 2,700 lbs]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="team-grid">
+      <!-- Member 1 -->
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Team Member 1" />
+        <div class="team-card-content">
+          <h3>[Team Member Name 1]</h3>
+          <span class="role">Lead Driver</span>
+          <p>[Insert short biography here. Outline racing experience, primary classes competed in, and background behind the wheel.]</p>
+        </div>
+      </div>
+      <!-- Member 2 -->
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Team Member 2" />
+        <div class="team-card-content">
+          <h3>[Team Member Name 2]</h3>
+          <span class="role">Crew Chief & Data Lead</span>
+          <p>[Insert short biography here. Outline technical expertise, trackside setup responsibilities, and chassis tuning experience.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats">
+    <h2 class="section-title">Performance Metrics</h2>
+    <div class="stats-grid">
+      <div class="stat-rectangle">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Podium Finishes</div>
+        <div class="stat-subtext">Across regional time trials</div>
+      </div>
+      <div class="stat-rectangle">
+        <div class="stat-number">1:21.4</div>
+        <div class="stat-label">Best Lap Time</div>
+        <div class="stat-subtext">Club circuit benchmark</div>
+      </div>
+      <div class="stat-rectangle">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Race Completions</div>
+        <div class="stat-subtext">Zero mechanical DNFs this year</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Season Recap -->
+  <section id="recap">
+    <h2 class="section-title">2026 Season Recap</h2>
+    <div class="recap-content">
+      <p>
+        [Insert season summary text here. Highlight championship standings, standout weekend battles, key mechanical upgrades made throughout 2026, and upcoming aspirations for next season.]
+      </p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-container">
+      <div class="carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 1" />
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1541348263662-e0c8666524e4?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 2" />
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80" alt="Season 2026 Highlight 3" />
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-btn" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Homeijer Motorsports. All rights reserved.</p>
+  </footer>
+
+  <!-- Simple Carousel Script -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+
+    function showSlide(index) {
+      slides.forEach((slide) => slide.classList.remove('active'));
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+      slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+  </script>
+</body>
+</html>
