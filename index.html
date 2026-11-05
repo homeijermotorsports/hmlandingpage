@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homeijer Motorsports</title>
 
-  <!-- Clean modern typography -->
+  <!-- Clean, bold modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
@@ -52,18 +52,23 @@
     .header-inner {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: flex-start;
     }
 
-    /* Embedded Brand Image */
-    .brand-logo-img {
-      height: 44px;
-      width: auto;
-      display: block;
-      object-fit: contain;
+    .brand-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--charcoal);
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      color: var(--orange);
     }
 
     /* Main Section Wrappers */
@@ -415,17 +420,10 @@
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
+  <!-- Top Navigation Header (Pure Text, No Image Dependencies) -->
   <header>
     <div class="header-inner">
-      <!-- Direct Inline Image: Renders instantly everywhere without broken links -->
-      <img 
-        class="brand-logo-img" 
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" 
-        data-brand="homeijer"
-        alt="Homeijer Motorsports" 
-        id="homeijerLogo"
-      />
+      <div class="brand-text">Homeijer <span>Motorsports</span></div>
     </div>
   </header>
 
@@ -554,56 +552,8 @@
     <p>&copy; 2026 Homeijer Motorsports. All rights reserved.</p>
   </footer>
 
-  <!-- Script for Logo Embed & Carousel -->
+  <!-- Simple Carousel Script -->
   <script>
-    // Clean Canvas Logo Generator to Guarantee Instant Display
-    const logoImg = document.getElementById('homeijerLogo');
-    const canvas = document.createElement('canvas');
-    canvas.width = 750;
-    canvas.height = 130;
-    const ctx = canvas.getContext('2d');
-
-    // Draw Background
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw Orange Chevrons & Base Bar
-    ctx.fillStyle = '#f26522';
-    ctx.beginPath();
-    ctx.moveTo(10, 85);
-    ctx.lineTo(650, 85);
-    ctx.lineTo(625, 125);
-    ctx.lineTo(125, 125);
-    ctx.closePath();
-    ctx.fill();
-
-    // Secondary Accent Orange
-    ctx.fillStyle = '#d9531e';
-    ctx.beginPath();
-    ctx.moveTo(650, 85);
-    ctx.lineTo(685, 40);
-    ctx.lineTo(705, 52);
-    ctx.lineTo(655, 125);
-    ctx.lineTo(625, 125);
-    ctx.closePath();
-    ctx.fill();
-
-    // Draw Dark Charcoal Slanted Main Title
-    ctx.save();
-    ctx.transform(1, 0, -0.22, 1, 0, 0); // Racing slant
-    ctx.fillStyle = '#111215';
-    ctx.font = '900 64px "Space Grotesk", sans-serif';
-    ctx.fillText('HOMEIJER', 55, 68);
-
-    // Draw Subtext in White
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 28px "Space Grotesk", sans-serif';
-    ctx.fillText('MOTORSPORTS', 170, 114);
-    ctx.restore();
-
-    // Set src to rendered logo
-    logoImg.src = canvas.toDataURL();
-
-    // Carousel Controller
     let activeIdx = 0;
     const slides = document.querySelectorAll('.carousel-slide');
 
