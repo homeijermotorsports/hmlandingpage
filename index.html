@@ -120,6 +120,11 @@
       }
     }
 
+    .car-image-column {
+      display: flex;
+      flex-direction: column;
+    }
+
     .car-image-container {
       position: relative;
       border-radius: 8px;
@@ -459,21 +464,19 @@
     /* Photo Credit Caption */
     .photo-credit {
       text-align: right;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 0.65rem;
+      margin-top: 0.55rem;
       padding-right: 0.25rem;
     }
 
-    .photo-credit a,
-    footer a {
+    .photo-credit a {
       color: var(--orange);
       font-weight: 700;
       text-decoration: none;
     }
 
-    .photo-credit a:hover,
-    footer a:hover {
+    .photo-credit a:hover {
       text-decoration: underline;
       color: var(--orange-hover);
     }
@@ -562,7 +565,6 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       margin-top: 3rem;
-      line-height: 1.8;
     }
   </style>
 </head>
@@ -579,9 +581,14 @@
   <section id="what-we-drive">
     <h2 class="section-title">What We Drive</h2>
     <div class="car-grid">
-      <div class="car-image-container">
-        <span class="car-badge">Chassis // 2013</span>
-        <img src="brz.jpg" alt="2013 Subaru BRZ Track Build" />
+      <div class="car-image-column">
+        <div class="car-image-container">
+          <span class="car-badge">Chassis // 2013</span>
+          <img src="brz.jpg" alt="2013 Subaru BRZ Track Build" />
+        </div>
+        <div class="photo-credit">
+          Photo by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a>
+        </div>
       </div>
       <div class="car-info">
         <h3>2013 BRZ</h3>
@@ -707,7 +714,7 @@
 
     <!-- Photography Credit -->
     <div class="photo-credit">
-      All site photography by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a>
+      Photos by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a>
     </div>
 
     <!-- Text Underneath -->
@@ -747,7 +754,6 @@
 
   <!-- Footer -->
   <footer>
-    <p>All site photography by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a></p>
     <p>&copy; 2026 Homeijer Motorsports. All rights reserved.</p>
   </footer>
 
