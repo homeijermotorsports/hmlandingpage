@@ -321,6 +321,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
     }
 
     .partner-card:hover {
@@ -336,6 +338,11 @@
       color: var(--charcoal);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .partner-card:hover .partner-name {
+      color: var(--orange);
     }
 
     /* Section 4: Performance Stats */
@@ -449,12 +456,34 @@
     .nav-btn.prev { left: 1.25rem; }
     .nav-btn.next { right: 1.25rem; }
 
+    /* Photo Credit Caption */
+    .photo-credit {
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.65rem;
+      padding-right: 0.25rem;
+    }
+
+    .photo-credit a,
+    footer a {
+      color: var(--orange);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .photo-credit a:hover,
+    footer a:hover {
+      text-decoration: underline;
+      color: var(--orange-hover);
+    }
+
     .recap-text-bottom {
       background: var(--bg-white);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 2.25rem;
-      margin-top: 1.75rem;
+      margin-top: 1.5rem;
       box-shadow: var(--shadow-sm);
     }
 
@@ -533,6 +562,7 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       margin-top: 3rem;
+      line-height: 1.8;
     }
   </style>
 </head>
@@ -621,15 +651,15 @@
       A special thank-you to everyone who made our 2026 season possible. Growing alongside each of our partners has been the driving force behind everything we achieved this year.
     </p>
     <div class="partners-grid">
-      <div class="partner-card">
+      <a href="https://kickcharge.com" target="_blank" rel="noopener noreferrer" class="partner-card">
         <div class="partner-name">KickCharge Creative</div>
-      </div>
-      <div class="partner-card">
+      </a>
+      <a href="https://www.madmindstakeover.com/" target="_blank" rel="noopener noreferrer" class="partner-card">
         <div class="partner-name">Madminds</div>
-      </div>
-      <div class="partner-card">
+      </a>
+      <a href="https://www.instagram.com/eastcoastdriftschool" target="_blank" rel="noopener noreferrer" class="partner-card">
         <div class="partner-name">East Coast Drift School</div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -675,6 +705,11 @@
       <button class="nav-btn next" onclick="moveSlide(1)" aria-label="Next image">&#10095;</button>
     </div>
 
+    <!-- Photography Credit -->
+    <div class="photo-credit">
+      All site photography by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a>
+    </div>
+
     <!-- Text Underneath -->
     <div class="recap-text-bottom">
       <h4>Reflections from the 2026 Season</h4>
@@ -712,6 +747,7 @@
 
   <!-- Footer -->
   <footer>
+    <p>All site photography by <a href="https://www.instagram.com/alexswankmedia" target="_blank" rel="noopener noreferrer">@alexswankmedia</a></p>
     <p>&copy; 2026 Homeijer Motorsports. All rights reserved.</p>
   </footer>
 
