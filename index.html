@@ -276,10 +276,59 @@
     .team-goal-text {
       color: var(--text-muted);
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* Section 3: Performance Stats */
+    /* Section 3: 2026 Partners */
+    .partners-intro {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 780px;
+      margin-bottom: 2rem;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .partner-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-bottom: 4px solid var(--charcoal);
+      border-radius: 10px;
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-3px);
+      border-bottom-color: var(--orange);
+      box-shadow: var(--shadow-md);
+    }
+
+    .partner-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section 4: Performance Stats */
     .stats-container {
       display: grid;
       grid-template-columns: 1fr;
@@ -323,15 +372,16 @@
       color: var(--orange);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.65rem;
     }
 
     .stat-subtext {
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
     }
 
-    /* Section 4: 2026 Season Recap (Photos Top, Text Below) */
+    /* Section 5: 2026 Season Recap (Photos Top, Text Below) */
     .carousel-wrapper {
       position: relative;
       border-radius: 12px;
@@ -397,13 +447,65 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--charcoal);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
 
     .recap-text-bottom p {
       color: var(--text-muted);
       font-size: 1.05rem;
       line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .recap-text-bottom p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Section 6: Tentative 2027 Events */
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .event-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--orange);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .event-date {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .event-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--charcoal);
     }
 
     /* Footer */
@@ -433,31 +535,30 @@
     <div class="car-grid">
       <div class="car-image-container">
         <span class="car-badge">Chassis // 2013</span>
-        <!-- Replace brz.jpg with your exact uploaded car filename -->
         <img src="brz.jpg" alt="2013 Subaru BRZ Track Build" />
       </div>
       <div class="car-info">
-        <h3>2013 Subaru BRZ</h3>
+        <h3>2013 BRZ</h3>
         <p>
-          [Insert car background, setup philosophy, and build journey here. Example: Developed for track-day precision and momentum-style cornering balance with complete telemetry integration.]
+          We take immense pride in building from the ground up and making the most of what we have, which makes our 2026 season accomplishments even more rewarding. Competing with an almost completely stock car, relying solely on suspension upgrades and a tune, was a true testament to our team’s hard work and resourcefulness. We couldn’t be prouder of what we achieved, and we are thrilled to share that big changes are coming as we prepare for the 2027 season!
         </p>
 
         <div class="specs-list">
           <div class="spec-item">
-            <span class="label">Engine</span>
-            <span class="val">[2.0L FA20 Boxer]</span>
+            <span class="label">2026 Engine</span>
+            <span class="val">2.0L Flat-4</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">2027 Engine</span>
+            <span class="val">2.4L Flat-4</span>
           </div>
           <div class="spec-item">
             <span class="label">Suspension</span>
-            <span class="val">[Adjustable Coilovers]</span>
+            <span class="val">Coilovers</span>
           </div>
           <div class="spec-item">
-            <span class="label">Aero</span>
-            <span class="val">[Front Splitter / Wing]</span>
-          </div>
-          <div class="spec-item">
-            <span class="label">Tires &amp; Brakes</span>
-            <span class="val">[200TW Track Setup]</span>
+            <span class="label">Tune</span>
+            <span class="val">[Placeholder]</span>
           </div>
         </div>
       </div>
@@ -470,22 +571,20 @@
     <div class="team-grid">
       <!-- Member 1 -->
       <div class="team-card">
-        <!-- Replace member1.jpg with your exact uploaded filename -->
-        <img src="member1.jpg" alt="Team Driver" />
+        <img src="member1.jpg" alt="Michael Homeijer" />
         <div class="team-content">
-          <h3>[Team Member 1]</h3>
-          <span class="role">Driver &amp; Setup Engineer</span>
-          <p>[Insert biography here. Highlight competition history, track license achievements, and seat time experience.]</p>
+          <h3>Michael Homeijer</h3>
+          <span class="role">Lead Driver &amp; Team Owner</span>
+          <p>Lead driver Michael brings a diverse motorsport background to the track, having started his career racing Slingshots before working in NASCAR and later expanding into drifting and time attack. Now, he is channeling that lifelong passion into launching the foundation of what will soon grow into a multi-car race team, Homeijer Motorsports.</p>
         </div>
       </div>
       <!-- Member 2 -->
       <div class="team-card">
-        <!-- Replace member2.jpg with your exact uploaded filename -->
-        <img src="member2.jpg" alt="Team Crew" />
+        <img src="member2.jpg" alt="Emily Crisafulli" />
         <div class="team-content">
-          <h3>[Team Member 2]</h3>
-          <span class="role">Pit Crew &amp; Data Lead</span>
-          <p>[Insert biography here. Outline trackside responsibilities, telemetry optimization, and chassis maintenance.]</p>
+          <h3>Emily Crisafulli</h3>
+          <span class="role">Head of Marketing &amp; Partnerships</span>
+          <p>Emily brings a strong background in marketing and branding, backed by years of experience in driving growth and building strategic partnerships. She is now applying that expertise to help build and expand the foundation of Homeijer Motorsports.</p>
         </div>
       </div>
     </div>
@@ -494,38 +593,57 @@
     <div class="team-goal-container">
       <h3 class="team-goal-title">Our Team Goal</h3>
       <p class="team-goal-text">
-        [Insert your partner and team vision here. Example: At Homeijer Motorsports, our mission is to build lasting relationships with performance brands, trackside sponsors, and technical partners. We aim to deliver genuine visibility through podium-contending runs, collaborative media coverage, and real-world track testing on and off the circuit.]
+        Homeijer Motorsports is built on a foundation of diverse racing disciplines, bringing together knowledge and experience from different styles and industries to build a collaborative team of drivers eager to learn from one another. Rather than chasing vanity metrics and fleeting social media views, we are focused on growing through shared expertise and meaningful, mutually beneficial partnerships. We look to align with companies that share our drive and values, going beyond simple online visibility by actively advocating for our partners, making in-person appearances, and sharing the true value of their brand across a wide range of communities.
       </p>
     </div>
   </section>
 
-  <!-- Section 3: Performance Stats -->
-  <section id="stats">
-    <h2 class="section-title">Performance Metrics</h2>
-    <div class="stats-container">
-      <div class="stat-rectangle">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Podium Finishes</div>
-        <div class="stat-subtext">Earned across regional time attack events</div>
+  <!-- Section 3: 2026 Partners -->
+  <section id="partners">
+    <h2 class="section-title">2026 Partners</h2>
+    <p class="partners-intro">
+      A special thank-you to everyone who made our 2026 season possible. Growing alongside each of our partners has been the driving force behind everything we achieved this year.
+    </p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-name">KickCharge Creative</div>
       </div>
-      <div class="stat-rectangle">
-        <div class="stat-number">1:21.4</div>
-        <div class="stat-label">Benchmark Lap Time</div>
-        <div class="stat-subtext">Personal best recorded on club circuit</div>
+      <div class="partner-card">
+        <div class="partner-name">Madminds</div>
       </div>
-      <div class="stat-rectangle">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Finish Reliability</div>
-        <div class="stat-subtext">Zero mechanical DNFs throughout the season</div>
+      <div class="partner-card">
+        <div class="partner-name">East Coast Drift School</div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: 2026 Season Recap (Photos Top, Text Below) -->
+  <!-- Section 4: Performance Stats -->
+  <section id="stats">
+    <h2 class="section-title">Performance Metrics</h2>
+    <div class="stats-container">
+      <div class="stat-rectangle">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Races Completed</div>
+        <div class="stat-subtext">Homeijer Motorsports competed in a full GRIDLIFE season with 4 races: Special Stage Atlanta, Midwest Fest Michigan, Summer Apex New York, and Circuit Legends Connecticut.</div>
+      </div>
+      <div class="stat-rectangle">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Finish Reliability</div>
+        <div class="stat-subtext">Consistent preparation and regular maintenance between races paid off and led to 100% reliability and zero DNFs across the entire season.</div>
+      </div>
+      <div class="stat-rectangle">
+        <div class="stat-number">15 Min</div>
+        <div class="stat-label">Live TV Time</div>
+        <div class="stat-subtext">Across the season, our program earned 15 minutes of dedicated live television coverage focused exclusively on our race car and current partners.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: 2026 Season Recap (Photos Top, Text Below) -->
   <section id="recap">
     <h2 class="section-title">2026 Season Recap</h2>
 
-    <!-- Photo Carousel (Replace recap1.jpg, recap2.jpg, recap3.jpg with your exact filenames) -->
+    <!-- Photo Carousel -->
     <div class="carousel-wrapper">
       <div class="carousel-slide active">
         <img src="recap1.jpg" alt="Season 2026 Track Moment 1" />
@@ -545,8 +663,34 @@
     <div class="recap-text-bottom">
       <h4>Reflections from the 2026 Season</h4>
       <p>
-        [Insert your season narrative here. Detail championship positions, standout track weekends, mechanical developments made over the season, challenges overcome in varied track conditions, and goals heading into the next year.]
+        Even with years of racing experience, our 2026 entry into GRIDLIFE’s ClubTR class came together pretty last minute, turning the season into a major learning experience. Because we didn't have much time to plan ahead, we spent a lot of the year reacting on the fly, though we still made the most of what we had. Connecting with other drivers at each event gave us a better understanding of the tracks, car setup, and how to approach each weekend. We are taking all of that knowledge into 2027 as we roll out major engine, weight, and aero upgrades.
       </p>
+      <p>
+        Just as important as our time on track were the in-person events and networking we did with our partners. Growing our audiences together and building long-term support systems off the track helped shape how we plan to operate moving forward. Starting from the ground up on short notice wasn't easy, and it definitely brought plenty of stress and long days, but that experience is the exact reason we are ready to take on 2027 with a whole new mindset.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 6: Tentative 2027 Events -->
+  <section id="events-2027">
+    <h2 class="section-title">Tentative 2027 Events</h2>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-date">May 20–22, 2027</div>
+        <div class="event-name">Special Stage Road Atlanta</div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">July 23–25, 2027</div>
+        <div class="event-name">Summer Apex Watkins Glen NY</div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">August 20–21, 2027</div>
+        <div class="event-name">Circuit Legends Lime Rock CT</div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">September 10–12, 2027</div>
+        <div class="event-name">Virginia Festival VIR</div>
+      </div>
     </div>
   </section>
 
